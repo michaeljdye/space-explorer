@@ -1,0 +1,23 @@
+{
+  "name": "space-explorer",
+  "version": "1.0.0",
+  "description": "Explore NASA provided data about space.",
+  "main": "server.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server \" \"npm run client\"",
+    "client": "npm start --prefix client",
+    "server": "nodemon server.js",
+    "start": "node server.js",
+    "test": "npm test"
+  },
+  "author": "Joey Dye",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "node-fetch": "^2.3.0",
+    "nodemon": "^1.18.10"
+  }
+}
