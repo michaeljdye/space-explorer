@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Router } from '@reach/router';
 import Index from './pages';
-import About from './pages/About';
+import Search from './pages/Search';
 import Login from './pages/Login';
 
 const App = () => {
   const [planet, setPlanet] = useState({});
+
   const getContent = async () => {
-    const res = await fetch('/api/content');
+    const res = await fetch('/api/planet');
     const data = await res.json();
     setPlanet(data);
-    console.log(data);
   };
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const App = () => {
     <div>
       <Router>
         <Index path="/" planet={planet} />
-        <About path="/about" planet={planet} />
+        <Search path="/search" planet={planet} />
         <Login path="/login" planet={planet} />
       </Router>
     </div>

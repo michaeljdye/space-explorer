@@ -6,9 +6,9 @@ const Index = ({ planet }) => {
     <Layout>
       <article data-name="article-full-bleed-background">
         <div>
-          <div class="aspect-ratio aspect-ratio--4x3 w-50 dib mb4">
+          <div className="aspect-ratio aspect-ratio--4x3 w-50 dib mb4">
             <div
-              class="aspect-ratio--object cover h-75"
+              className="aspect-ratio--object cover h-75"
               style={{ background: `url(${planet.url}) center` }}
             />
           </div>
