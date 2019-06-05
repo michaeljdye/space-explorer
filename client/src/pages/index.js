@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
 
-const Index = ({ planet }) => {
+const Index = () => {
+  const [planet, setPlanet] = useState({});
+
+  const getContent = async () => {
+    try {
+      const res = await fetch('/api/planet');
+      const data = await res.json();
+      setPlanet(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getContent();
+  }, []);
+
   return (
     <Layout>
       <article data-name="article-full-bleed-background">
