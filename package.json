@@ -5,6 +5,7 @@
   "main": "start.js",
   "scripts": {
     "dev": "concurrently \"npm run server \" \"npm run client\"",
+    "prod": "concurrently \"npm run start \" \"npm run client\"",
     "client": "npm start --prefix client",
     "server": "nodemon start.js",
     "start": "node start.js",
