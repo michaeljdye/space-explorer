@@ -22,13 +22,13 @@ const Index = () => {
     <Layout>
       <article data-name="article-full-bleed-background">
         <div>
-          <div className="aspect-ratio aspect-ratio--4x3 w-50 dib mb4">
+          <div className="aspect-ratio aspect-ratio--4x3 w-100 w-50-ns dib mb4">
             <div
-              className="aspect-ratio--object cover h-75"
+              className="aspect-ratio--object cover h-100 h-75-ns"
               style={{ background: `url(${planet.url}) center` }}
             />
           </div>
-          <div className="fl pa3 pa-ns bg-white black-70 w-50 f3 times">
+          <div className="fl pa3 pa-ns bg-white black-70 w-100 w-50-ns f3 times">
             <header className="bb b--black-70">
               <h3 className="f2 fw7 ttu tracked lh-title mt0 mb3 avenir">
                 {planet.title}

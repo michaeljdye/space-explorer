@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import Layout from '../components/Layout';
 
 const Search = () => {
+  const currentYear = new Date().getFullYear();
   const [query, setQuery] = useState('');
-  const [start, setStart] = useState('');
+  const [start, setStart] = useState(currentYear);
   const [results, setResults] = useState({});
 
   const handleInputChange = e => {

@@ -37,7 +37,7 @@ const SignIn = ({ navigate, initUser }) => {
         <form onSubmit={handleSubmit}>
           <fieldset
             id="sign_up"
-            className="w-50 mt4 center ba b--transparent ph0 mh0"
+            className="w-100 w-50-ns mt4 center ba b--transparent ph0 mh0"
           >
             <legend className="f4 center fw6 ph0 mh0">
               <h2>Sign In</h2>

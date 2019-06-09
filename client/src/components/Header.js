@@ -16,7 +16,7 @@ const Header = () => {
         ''
       )}
       <Link
-        className="f5 fw4 dim no-underline black dn dib-ns pv2 ph3"
+        className="f5 fw4 db dim no-underline black dn dib-ns pv2 ph3"
         to="/search"
       >
         Search
@@ -51,7 +51,7 @@ const Header = () => {
       <div className="cover mb4 bg-left bg-center-l">
         <div className="pb2 pb2-m pb2-l">
           <nav className="dt w-100 mw8 center">
-            <div className="dtc v-mid">
+            <div className="dtc-ns tc tl-ns v-mid w-100 w-50-ns db">
               <h1>
                 <Link
                   to="/"
@@ -61,7 +61,7 @@ const Header = () => {
                 </Link>
               </h1>
             </div>
-            <div className="dtc v-mid tr pa3">
+            <div className="dtc-ns flex justify-center db-ns v-mid tr-ns tc pa3-ns pb3 ph3 w-100">
               {!isAuth ? guestLinks : authLinks}
             </div>
           </nav>
