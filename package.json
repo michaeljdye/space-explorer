@@ -5,10 +5,10 @@
   "main": "start.js",
   "scripts": {
     "dev": "concurrently \"npm run server \" \"npm run client\"",
-    "start": "concurrently \"npm run prod \" \"npm run client\"",
+    "prod": "concurrently \"npm run prod \" \"npm run client\"",
     "client": "npm start --prefix client",
     "server": "nodemon start.js",
-    "prod": "node start.js",
+    "start": "node start.js",
     "test": "npm test",
     "build": "npm run build --prefix client"
   },
