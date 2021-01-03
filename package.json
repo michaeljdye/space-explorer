@@ -5,11 +5,12 @@
   "main": "start.js",
   "scripts": {
     "dev": "concurrently \"npm run server \" \"npm run client\"",
-    "prod": "concurrently \"npm run start \" \"npm run client\"",
+    "start": "concurrently \"npm run prod \" \"npm run client\"",
     "client": "npm start --prefix client",
     "server": "nodemon start.js",
-    "start": "node start.js",
-    "test": "npm test"
+    "prod": "node start.js",
+    "test": "npm test",
+    "build": "npm run build --prefix client"
   },
   "author": "Joey Dye",
   "license": "MIT",
