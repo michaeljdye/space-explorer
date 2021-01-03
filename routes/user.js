@@ -4,6 +4,7 @@ const { check } = require('express-validator/check')
 const userController = require('../controllers/userController')
 
 router.post('/signin', userController.signIn)
+
 router.post(
   '/register',
   [check('name').exists(), check('email').isEmail()],
