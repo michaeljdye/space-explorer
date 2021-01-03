@@ -9,7 +9,8 @@
     "client": "npm start --prefix client",
     "server": "nodemon start.js",
     "start": "node start.js",
-    "test": "npm test"
+    "test": "npm test",
+    "build": "cd client/ && npm install && npm run build"
   },
   "author": "Joey Dye",
   "license": "MIT",
