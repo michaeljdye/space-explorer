@@ -18,6 +18,11 @@ app.use('/api/planet', planet)
 app.use('/api/search', search)
 app.use('/api/user', user)
 app.use('/api/auth', auth)
-app.use('/', docs)
+
+// The "catchall" handler: for any request that doesn't
+// match one above, send back React's index.html file.
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client/build/index.html'))
+})
 
 module.exports = app
