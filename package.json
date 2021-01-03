@@ -10,7 +10,7 @@
     "server": "nodemon start.js",
     "start": "node start.js",
     "test": "npm test",
-    "build": "cd client/ && npm install && npm run build"
+    "heroku-postbuild": "cd client/ && npm install && npm run build"
   },
   "author": "Joey Dye",
   "license": "MIT",
