@@ -1,10 +1,14 @@
 const express = require('express')
+const path = require('path')
 
 // Create Express app
 const app = express()
 
 // Add Body Parser middleware
 app.use(express.json())
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'client/build')))
 
 // Import routes
 const planet = require('./routes/planet')
