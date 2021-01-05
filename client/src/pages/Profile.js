@@ -11,11 +11,15 @@ const Profile = () => {
       <div>
         <div>
           <div>
-            <p>Name</p>
+            <p>
+              <strong>Name</strong>
+            </p>
             <p>{user.name}</p>
           </div>
           <div>
-            <p>email</p>
+            <p>
+              <strong>email</strong>
+            </p>
             <p>{user.email}</p>
           </div>
         </div>

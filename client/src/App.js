@@ -42,16 +42,25 @@ const App = () => {
     <UserContext.Provider
       value={{ user: user.user, token: user.token, isAuth: user.isAuth }}
     >
-      <div>
+      {user.isAuth ? (
         <Router>
           <PublicRoute path='/' component={Index} />
+          <PublicRoute path='/' component={Index} />
+          <ProtectedRoute path='/profile' component={Profile} />
           <ProtectedRoute path='/search' component={Search} />
           <ProtectedRoute path='/profile' component={Profile} />
-          <SignIn path='/sign-in' navigate={navigate} initUser={initUser} />
           <SignOut path='/sign-out' removeUser={removeUser} />
-          <SignUp path='/sign-up' navigate={navigate} />
         </Router>
-      </div>
+      ) : (
+        <div>
+          <Router>
+            <PublicRoute path='/' component={Index} />
+            <PublicRoute path='/' component={Index} />
+            <SignIn path='/sign-in' navigate={navigate} initUser={initUser} />
+            <SignUp path='/sign-up' navigate={navigate} />
+          </Router>
+        </div>
+      )}
     </UserContext.Provider>
   )
 }
