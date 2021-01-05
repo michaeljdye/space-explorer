@@ -9,9 +9,13 @@ const Header = () => {
   const authLinks = (
     <>
       {user ? (
-        <span className='mr2' style={{ fontWeight: 'bold' }}>
+        <Link
+          className='f5 fw4 db dim no-underline black dn dib-ns pv2 ph3 mr2'
+          style={{ fontWeight: 'bold' }}
+          to='/profile'
+        >
           Welcome, {user.name}
-        </span>
+        </Link>
       ) : (
         ''
       )}
@@ -26,12 +30,6 @@ const Header = () => {
         to='/sign-out'
       >
         Sign Out
-      </Link>
-      <Link
-        className='f5 link dim no-underline ph3 pv2 mb2 dib black'
-        to='/profile'
-      >
-        Profile
       </Link>
     </>
   )

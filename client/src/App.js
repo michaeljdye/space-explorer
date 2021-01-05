@@ -38,8 +38,6 @@ const App = () => {
     }
   }, [])
 
-  console.log(user)
-
   return (
     <UserContext.Provider
       value={{ user: user.user, token: user.token, isAuth: user.isAuth }}

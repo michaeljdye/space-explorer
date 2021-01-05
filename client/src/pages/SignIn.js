@@ -35,7 +35,7 @@ const SignIn = ({ navigate, initUser }) => {
 
       window.sessionStorage.setItem('token', JSON.stringify(data.token))
 
-      // navigate('../')
+      navigate('../')
     } catch (error) {}
   }
 
