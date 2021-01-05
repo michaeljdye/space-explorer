@@ -31,12 +31,12 @@ const SignIn = ({ navigate, initUser }) => {
 
       initUser(data)
 
+      window.sessionStorage.setItem('user', JSON.stringify(data.user))
+
       window.sessionStorage.setItem('token', JSON.stringify(data.token))
 
-      navigate('../')
-    } catch (error) {
-      console.log('password too short')
-    }
+      // navigate('../')
+    } catch (error) {}
   }
 
   return (
