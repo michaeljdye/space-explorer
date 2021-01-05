@@ -9,5 +9,6 @@ router.post(
   [check('name').exists(), check('email').isEmail()],
   userController.register
 )
+router.put('/update', userController.update)
 
 module.exports = router

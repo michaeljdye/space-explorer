@@ -58,3 +58,25 @@ exports.register = async (req, res) => {
     })
   })
 }
+
+exports.update = async (req, res) => {
+  const { authorization } = req.headers
+  const { id, name, email } = req.body
+
+  if (authorization.startsWith('Bearer')) {
+    const token = authorization.split(' ')[1]
+  }
+
+  if (name && email) {
+    const user = await User.findByIdAndUpdate(
+      id,
+      { name, email },
+      { new: true }
+    )
+
+    res.status(200).json({
+      success: true,
+      message: { id: user.id, name: user.name, email: user.email },
+    })
+  }
+}

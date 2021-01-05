@@ -18,6 +18,11 @@ const App = () => {
     setUser({ ...data, isAuth: true })
   }
 
+  const updateUser = updatedUser => {
+    window.sessionStorage.setItem('user', JSON.stringify(updatedUser))
+    setUser({ ...user, user: { ...updatedUser } })
+  }
+
   const removeUser = () => {
     window.sessionStorage.removeItem('token')
     window.sessionStorage.removeItem('user')
@@ -40,7 +45,12 @@ const App = () => {
 
   return (
     <UserContext.Provider
-      value={{ user: user.user, token: user.token, isAuth: user.isAuth }}
+      value={{
+        user: user.user,
+        token: user.token,
+        isAuth: user.isAuth,
+        updateUser: updateUser,
+      }}
     >
       {user.isAuth ? (
         <Router>
