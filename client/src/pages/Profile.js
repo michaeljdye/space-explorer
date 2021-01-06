@@ -19,17 +19,26 @@ const Profile = () => {
   const handleSubmit = async e => {
     e.preventDefault()
 
-    const data = await fetch('/api/user/update', {
-      method: 'put',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({ id: user.id, name, email }),
-    }).then(res => res.json())
+    try {
+      const { success, message } = await fetch('/api/user/update', {
+        method: 'put',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id: user.id, name, email }),
+      })
+        .then(res => res.json())
+        .catch(error => console.log(error))
 
-    if (data.success) {
-      updateUser(data.message)
+      if (!success) {
+        console.log(message)
+        return
+      }
+
+      updateUser(message)
+    } catch (error) {
+      console.log(error)
     }
   }
 

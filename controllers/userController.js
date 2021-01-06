@@ -63,11 +63,24 @@ exports.update = async (req, res) => {
   const { authorization } = req.headers
   const { id, name, email } = req.body
 
-  if (authorization.startsWith('Bearer')) {
-    const token = authorization.split(' ')[1]
+  if (!authorization && !authorization?.startsWith('Bearer')) {
+    return res.status(400).json({
+      success: false,
+      message: 'Not authorized',
+    })
   }
 
-  if (name && email) {
+  const token = authorization.split(' ')[1]
+
+  jwt.verify(token, process.env.JWTSECRET, async (err, decoded) => {
+    if (err) {
+      return res.status(400).json({ success: false, message: 'Not authorized' })
+    }
+
+    if (!name || !email) {
+      return res.status(400).json({ success: false, message: 'Missing fields' })
+    }
+
     const user = await User.findByIdAndUpdate(
       id,
       { name, email },
@@ -78,5 +91,5 @@ exports.update = async (req, res) => {
       success: true,
       message: { id: user.id, name: user.name, email: user.email },
     })
-  }
+  })
 }
