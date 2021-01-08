@@ -63,7 +63,7 @@ exports.update = async (req, res) => {
   const { authorization } = req.headers
   const { id, name, email } = req.body
 
-  if (!authorization && !authorization?.startsWith('Bearer')) {
+  if (!authorization && !authorization.startsWith('Bearer')) {
     return res.status(400).json({
       success: false,
       message: 'Not authorized',
