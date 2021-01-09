@@ -6,6 +6,7 @@ import SignIn from './pages/SignIn'
 import SignOut from './components/SignOut'
 import SignUp from './pages/SignUp'
 import Profile from './pages/Profile'
+import Mars from './pages/Mars'
 import ProtectedRoute from './components/ProtectedRoute'
 import PublicRoute from './components/PublicRoute'
 
@@ -58,7 +59,7 @@ const App = () => {
           <PublicRoute path='/' component={Index} />
           <ProtectedRoute path='/profile' component={Profile} />
           <ProtectedRoute path='/search' component={Search} />
-          <ProtectedRoute path='/profile' component={Profile} />
+          <ProtectedRoute path='/mars' component={Mars} />
           <SignOut path='/sign-out' removeUser={removeUser} />
         </Router>
       ) : (

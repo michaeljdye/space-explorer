@@ -26,6 +26,12 @@ const Header = () => {
         Search
       </Link>
       <Link
+        className='f5 fw4 db dim no-underline black dn dib-ns pv2 ph3'
+        to='/mars'
+      >
+        Mars
+      </Link>
+      <Link
         className='f5 link dim no-underline ph3 pv2 mb2 dib black'
         to='/sign-out'
       >
