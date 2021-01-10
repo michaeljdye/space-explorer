@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styled from '@emotion/styled'
 import Layout from '../components/Layout'
 import { formatDate } from '../utils/dateUtils'
+import { UserContext } from '../App'
 
 const Mars = () => {
+  const { token } = useContext(UserContext)
   const [images, setImages] = useState([])
   const [date, setDate] = useState('')
+
+  console.log(token)
 
   const getRoverImgs = async d => {
     let data
@@ -20,6 +24,7 @@ const Mars = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       },
       body: data ? JSON.stringify(data) : JSON.stringify({}),
     }).then(response => response.json())
@@ -47,7 +52,13 @@ const Mars = () => {
     <Layout>
       <form onSubmit={handleSubmit}>
         <label id='date'>
-          <input onChange={handleDate} value={date} name='date' type='date' />
+          <input
+            onChange={handleDate}
+            value={date}
+            name='date'
+            type='date'
+            max={formatDate(new Date())}
+          />
         </label>
         <button
           className='f6 link ph3 pv2 mb2 dib white bg-black mt3'
