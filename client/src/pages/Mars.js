@@ -9,8 +9,6 @@ const Mars = () => {
   const [images, setImages] = useState([])
   const [date, setDate] = useState('')
 
-  console.log(token)
-
   const getRoverImgs = async d => {
     let data
 

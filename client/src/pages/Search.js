@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Layout from '../components/Layout'
+import { UserContext } from '../App'
 
 const Search = () => {
   const currentYear = new Date().getFullYear()
   const [query, setQuery] = useState('')
   const [start, setStart] = useState(currentYear)
   const [results, setResults] = useState({})
+  const { token } = useContext(UserContext)
 
   const handleInputChange = e => {
     setQuery(e.target.value)
@@ -17,7 +19,15 @@ const Search = () => {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    const res = await fetch(`/api/search/${query}/${start}`)
+
+    if (!query) return
+
+    const res = await fetch(`/api/search/${query}/${start}`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     const data = await res.json()
     setResults(data)
   }
@@ -47,6 +57,8 @@ const Search = () => {
             name='years'
             onChange={handleSelectChange}
           >
+            <option value='2021'>2021</option>
+            <option value='2020'>2020</option>
             <option value='2019'>2019</option>
             <option value='2018'>2018</option>
             <option value='2017'>2017</option>
@@ -62,30 +74,37 @@ const Search = () => {
       </form>
       <section className='mw8'>
         {collection &&
-          collection.items.map(({ data, links }) => (
-            <article
-              className='pv4 bt bb b--black-10 ph3 ph0-l'
-              key={data[0].nasa_id}
-            >
-              <div className='flex flex-column flex-row-ns'>
-                <div className='w-100 w-60s pr3-ns order-2 order-1-ns'>
-                  <h1 className='f3 athelas mt0 lh-title'>{data[0].title}</h1>
-                  <p className='f5 f4-l lh-copy athelas'>
-                    {data[0].description}
-                  </p>
+          collection.items.map(({ data, links }) => {
+            console.log(data)
+            return (
+              <article
+                className='pv4 bt bb b--black-10 ph3 ph0-l'
+                key={data[0].nasa_id}
+              >
+                <div className='flex flex-column flex-row-ns'>
+                  <div className='w-100 w-60s pr3-ns order-2 order-1-ns'>
+                    <h1 className='f3 athelas mt0 lh-title'>{data[0].title}</h1>
+                    <p className='f5 f4-l lh-copy athelas'>
+                      {data[0].description}
+                    </p>
+                  </div>
+                  <div className='pl3-ns order-1 order-2-ns mb4 mb0-ns w-100 w-40-ns'>
+                    {links && (
+                      <img
+                        src={links[0].href}
+                        alt={data[0].title}
+                        width='350'
+                      />
+                    )}
+                  </div>
                 </div>
-                <div className='pl3-ns order-1 order-2-ns mb4 mb0-ns w-100 w-40-ns'>
-                  {links && (
-                    <img src={links[0].href} alt={data[0].title} width='350' />
-                  )}
-                </div>
-              </div>
-              <p className='f6 lh-copy gray mv0'>
-                By <span className='ttu'>Robin Darnell</span>
-              </p>
-              <time className='f6 db gray'>Nov. 21, 2016</time>
-            </article>
-          ))}
+                <p className='f6 lh-copy gray mv0'>
+                  By <span className='ttu'>Robin Darnell</span>
+                </p>
+                <time className='f6 db gray'>Nov. 21, 2016</time>
+              </article>
+            )
+          })}
       </section>
     </Layout>
   )
