@@ -34,7 +34,7 @@ const Mars = () => {
 
   useEffect(() => {
     getRoverImgs()
-  }, [])
+  }, [getRoverImgs])
 
   const handleDate = e => {
     setDate(e.target.value)
@@ -74,6 +74,7 @@ const Mars = () => {
                 <img
                   style={{ backgroundImage: `url(${img_src})` }}
                   class='db bg-center cover aspect-ratio--object'
+                  alt=''
                 />
               </div>
             </div>
