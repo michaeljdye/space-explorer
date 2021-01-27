@@ -34,7 +34,7 @@ const Mars = () => {
 
   useEffect(() => {
     getRoverImgs()
-  }, [getRoverImgs])
+  }, [])
 
   const handleDate = e => {
     setDate(e.target.value)

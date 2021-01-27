@@ -24,6 +24,8 @@ exports.getRoverImages = async (req, res) => {
   try {
     const data = await fetch(url.href).then(response => response.json())
 
+    console.log(data)
+
     res.json({ success: true, message: data.photos })
   } catch (error) {
     console.log(error)
