@@ -1,3 +1,5 @@
 # Space Explorer
 
-Explore the NASA database to discover new planets, stars, and other astronomical objects.
+Explore space with data provided by NASA. Built with React, Express, MongoDB, JWT, and NASA API.
+
+![Drag Racing](./images/space-explorer.png)
